@@ -1,0 +1,36 @@
+<!-- <form (ngSubmit)="sendMessage()" class="d-flex mt-2 mx-3">
+    <input class="form-control w-50" type="text" [(ngModel)]="userMessage" name="userMessage" placeholder="Enter your message" >
+    <button class="ms-2 btn btn-primary" type="submit">Send</button>
+</form>
+
+<div class="chat-container mx-3">
+    <div *ngFor="let message of chatMessages">
+        <div
+            [ngClass]="{'system-message': message.role === 'system', 'user-message': message.role === 'user', 'assistant-message': message.role === 'assistant', 'question-message': message.role === 'question', 'answer-message': message.role === 'answer'}">
+            {{ message.content }}
+        </div>
+    </div>
+</div> -->
+<div class="container text-center">
+    <img src="../../assets/chatbot.png" alt="" >
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="chat-container">
+        
+        <div class="chat-body">            
+            <div *ngFor="let message of chatMessages" class="message"
+                [ngClass]="{'received': message.role === 'assistant', 'sent': message.role === 'user'}">
+                <img *ngIf="message.role === 'assistant'" src="../../assets/chatbot2.jpg" class="rounded-circle me-2" width="40" alt="">
+                    <img *ngIf="message.role === 'user'" src="../../assets/user.png" class="rounded-circle me-2" width="30" alt="">
+                <p> 
+                    {{ message.content }}
+                </p>
+            </div>
+        </div>
+        <div class="chat-footer d-flex justify-content-between mt-2">
+            <input class="form-control w-100" type="text" [(ngModel)]="userMessage" name="userMessage" placeholder="Enter your message" >
+            <button class="ms-2 btn btn-primary" type="submit" (click)="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+        </div>
+        
+    </div>
+</div>
